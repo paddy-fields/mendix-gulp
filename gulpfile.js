@@ -93,12 +93,12 @@ gulp.task('css', gulp.series(['watch:css']));
 // Browsersync
 gulp.task('browsersync-sass', function () {
   return gulp.src(sourceSassFolder + '**/*.scss')
+    .pipe(sourcemaps.init())
     .pipe(plumber({
       errorHandler: onSassError
     }))
     .pipe(sass().on("error", sass.logError))
     .pipe(autoprefixer())
-    .pipe(sourcemaps.init())
     .pipe(sourcemaps.write())
     .pipe(gulp.dest(sourceCssFolder))
     .pipe(gulp.dest(deploymentCssFolder))
