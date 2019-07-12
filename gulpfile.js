@@ -97,6 +97,7 @@ gulp.task('browsersync-sass', function () {
       errorHandler: onSassError
     }))
     .pipe(sass().on("error", sass.logError))
+    .pipe(autoprefixer())
     .pipe(sourcemaps.init())
     .pipe(sourcemaps.write())
     .pipe(gulp.dest(sourceCssFolder))
